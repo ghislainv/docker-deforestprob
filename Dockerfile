@@ -26,7 +26,7 @@ RUN apt-get update \
     && xargs -a /tmp/apt-packages.txt apt-get install -y
 
 # Install Google Cloud SDK
-RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-stretch" >> /etc/apt/sources.list
+RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-stretch" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN apt-get update && apt-get install google-cloud-sdk google-cloud-sdk-app-engine-python
 
