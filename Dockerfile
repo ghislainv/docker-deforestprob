@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# docker-debian-jupyter
-# Debian dockerfile with jupyter notebook
+# docker-deforestprob
 
 # Base image
-FROM debian:latest
+FROM debian:stretch
 MAINTAINER Ghislain Vieilledent <ghislain.vieilledent@cirad.fr>
 
 # Terminal
@@ -25,6 +24,11 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get dist-upgrade -y \
     && xargs -a /tmp/apt-packages.txt apt-get install -y
+
+# Install Google Cloud SDK
+RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-stretch" >> /etc/apt/sources.list
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN apt-get update && apt-get install google-cloud-sdk google-cloud-sdk-app-engine-python
 
 # Reconfigure locales
 RUN dpkg-reconfigure locales \
