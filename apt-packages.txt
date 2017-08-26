@@ -33,3 +33,4 @@ ca-certificates
 wget
 nano
 osmctools
+unzip
