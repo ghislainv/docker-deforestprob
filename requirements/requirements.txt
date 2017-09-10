@@ -8,3 +8,4 @@ statsmodels
 sklearn
 earthengine-api
 psutil
+google-cloud-storage
