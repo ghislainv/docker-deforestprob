@@ -6,3 +6,4 @@ matplotlib
 statsmodels
 sklearn
 earthengine-api
+psutil
